@@ -6,6 +6,7 @@ from pywebio import start_server
 import io
 from datetime import datetime
 import time
+import argparse
 
 now = datetime.now()
 
@@ -105,4 +106,9 @@ def tspncy():
 
 
 if __name__ == '__main__':
-    start_server(main, debug=True, port=8080, cdn=False)
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--port", type=int, default=8080)
+    args = parser.parse_args()
+
+    start_server(main, debug=False, port=args.port, cdn=False)
